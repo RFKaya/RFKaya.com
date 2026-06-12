@@ -46,83 +46,253 @@
         </header>
 
         <main>
+            <section class="skills fade-in" style="animation-delay: 0.3s;">
+                <h2 class="section-title"><span>></span> Yetenekler</h2>
+
+                <div class="skills-grid">
+                    <article class="skill-card">
+                        <div class="skill-card-header">
+                            <h3>Diller & Arayüz</h3>
+                        </div>
+                        <div class="skill-tags" aria-label="Diller ve arayüz teknolojileri">
+                            <span>TypeScript</span>
+                            <span>JavaScript</span>
+                            <span>Python</span>
+                            <span>Rust</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>EJS</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-card-header">
+                            <h3>Framework & Veritabanı</h3>
+                        </div>
+                        <div class="skill-tags" aria-label="Framework ve veritabanı teknolojileri">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>Axum</span>
+                            <span>Tokio</span>
+                            <span>Prisma</span>
+                            <span>SQLite</span>
+                            <span>MongoDB</span>
+                            <span>Mongoose</span>
+                            <span>Discord.js</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-card-header">
+                            <h3>Uzmanlık Alanları</h3>
+                        </div>
+                        <div class="skill-tags" aria-label="Uzmanlık alanları">
+                            <span>Full Stack Geliştirme</span>
+                            <span>Backend Geliştirme</span>
+                            <span>REST API</span>
+                            <span>Ağ Güvenliği</span>
+                            <span>TCP / UDP</span>
+                            <span>Asenkron Programlama</span>
+                            <span>Parola Güvenliği</span>
+                            <span>Web Scraping</span>
+                            <span>Otomasyon</span>
+                            <span>Discord Botları</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-card-header">
+                            <h3>Araçlar & Uygulamalar</h3>
+                        </div>
+                        <div class="skill-tags" aria-label="Araçlar ve uygulamalar">
+                            <span>Git</span>
+                            <span>GitHub</span>
+                            <span>Docker</span>
+                            <span>Linux</span>
+                            <span>Terminal</span>
+                            <span>Pytest</span>
+                            <span>Discord Webhook</span>
+                            <span>Recharts</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
             <section class="projects fade-in" style="animation-delay: 0.4s;">
                 <h2 class="section-title"><span>></span> Projeler</h2>
 
                 <div class="projects-list">
-                    <!-- Featured Projects -->
-                    <a href="https://github.com/RFKaya/Nraphy" target="_blank" rel="noopener noreferrer"
-                        class="project-row">
-                        <div class="project-row-left">
-                            <span class="project-indicator">></span>
-                            <div class="project-title-desc">
-                                <span class="project-name">Nraphy</span>
-                                <span class="project-desc">Türkiye'nin en büyük Discord botlarından</span>
+                    <details class="project-card project-card-featured">
+                        <summary class="project-row">
+                            <div class="project-row-left">
+                                <span class="project-indicator">></span>
+                                <div class="project-title-desc">
+                                    <span class="project-name">Nraphy</span>
+                                    <span class="project-desc">Çok amaçlı Discord botu</span>
+                                </div>
                             </div>
+                            <div class="project-row-right">
+                                <span class="project-toggle" aria-hidden="true">+</span>
+                            </div>
+                        </summary>
+                        <div class="project-details">
+                            <p>Nraphy; müzik, eğlence ve moderasyon özelliklerini tek bir yapıda sunan, genişletilebilir bir Discord botu projesidir. Farklı sunucu ihtiyaçlarını merkezi komut sistemi üzerinden karşılamayı amaçlar.</p>
+                            <ul class="project-features">
+                                <li>Müzik, eğlence ve moderasyon komutları</li>
+                                <li>Modüler ve geliştirilebilir komut yapısı</li>
+                                <li>Discord sunucuları için kolay kullanım</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span>JavaScript</span>
+                                <span>Node.js</span>
+                                <span>Discord.js</span>
+                            </div>
+                            <div class="project-gallery" aria-label="Nraphy proje görselleri">
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                            </div>
+                            <a href="https://github.com/RFKaya/Nraphy" target="_blank" rel="noopener noreferrer"
+                                class="project-action">GitHub'da İncele <span>↗</span></a>
                         </div>
-                        <div class="project-row-right">
-                            <span class="project-badge featured">★ Öne Çıkan</span>
-                            <span class="project-link-arrow">&rarr;</span>
-                        </div>
-                    </a>
+                    </details>
 
-                    <a href="https://github.com/RFKaya/Fiyat-Yoneticisi" target="_blank" rel="noopener noreferrer"
-                        class="project-row">
-                        <div class="project-row-left">
-                            <span class="project-indicator">></span>
-                            <div class="project-title-desc">
-                                <span class="project-name">FiyatVizyon</span>
-                                <span class="project-desc">Fiyat Yöneticisi ve Analiz</span>
+                    <details class="project-card project-card-featured">
+                        <summary class="project-row">
+                            <div class="project-row-left">
+                                <span class="project-indicator">></span>
+                                <div class="project-title-desc">
+                                    <span class="project-name">FiyatVizyon</span>
+                                    <span class="project-desc">Fiyat yönetimi ve analiz uygulaması</span>
+                                </div>
                             </div>
+                            <div class="project-row-right">
+                                <span class="project-toggle" aria-hidden="true">+</span>
+                            </div>
+                        </summary>
+                        <div class="project-details">
+                            <p>FiyatVizyon, ürün fiyatlarını düzenli biçimde yönetmek ve değişimleri daha kolay analiz etmek için geliştirilen bir takip uygulamasıdır. Dağınık fiyat verilerini anlaşılır bir yönetim ekranında bir araya getirir.</p>
+                            <ul class="project-features">
+                                <li>Ürün ve fiyat kayıtlarını merkezi yönetme</li>
+                                <li>Fiyat değişimlerini izleme ve karşılaştırma</li>
+                                <li>Karar vermeyi kolaylaştıran analiz görünümü</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span>Veri Analizi</span>
+                                <span>Fiyat Takibi</span>
+                                <span>Web Uygulaması</span>
+                            </div>
+                            <div class="project-gallery" aria-label="FiyatVizyon proje görselleri">
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                            </div>
+                            <a href="https://github.com/RFKaya/Fiyat-Yoneticisi" target="_blank"
+                                rel="noopener noreferrer" class="project-action">GitHub'da İncele <span>↗</span></a>
                         </div>
-                        <div class="project-row-right">
-                            <span class="project-badge featured">★ Öne Çıkan</span>
-                            <span class="project-link-arrow">&rarr;</span>
-                        </div>
-                    </a>
+                    </details>
 
-                    <!-- Regular Projects -->
-                    <a href="https://github.com/RFKaya/Port-Scanner" target="_blank" rel="noopener noreferrer"
-                        class="project-row">
-                        <div class="project-row-left">
-                            <span class="project-indicator">></span>
-                            <div class="project-title-desc">
-                                <span class="project-name">Port-Scanner</span>
-                                <span class="project-desc">Ağ tarama aracı</span>
+                    <details class="project-card">
+                        <summary class="project-row">
+                            <div class="project-row-left">
+                                <span class="project-indicator">></span>
+                                <div class="project-title-desc">
+                                    <span class="project-name">Port Scanner</span>
+                                    <span class="project-desc">Ağ ve port tarama aracı</span>
+                                </div>
                             </div>
+                            <div class="project-row-right">
+                                <span class="project-toggle" aria-hidden="true">+</span>
+                            </div>
+                        </summary>
+                        <div class="project-details">
+                            <p>Port Scanner, bir hedef üzerindeki erişilebilir portları kontrol ederek çalışan servisler hakkında hızlı bir ön değerlendirme yapılmasını sağlayan ağ güvenliği aracıdır.</p>
+                            <ul class="project-features">
+                                <li>Belirlenen hedef üzerinde port taraması</li>
+                                <li>Açık ve kapalı portları ayırt etme</li>
+                                <li>Basit ve hızlı güvenlik keşfi</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span>Ağ Güvenliği</span>
+                                <span>Port Tarama</span>
+                                <span>Güvenlik Aracı</span>
+                            </div>
+                            <div class="project-gallery" aria-label="Port Scanner proje görselleri">
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                            </div>
+                            <a href="https://github.com/RFKaya/Port-Scanner" target="_blank" rel="noopener noreferrer"
+                                class="project-action">GitHub'da İncele <span>↗</span></a>
                         </div>
-                        <div class="project-row-right">
-                            <span class="project-link-arrow">&rarr;</span>
-                        </div>
-                    </a>
+                    </details>
 
-                    <a href="https://github.com/RFKaya/sifre-olusturucu-puanlayici" target="_blank"
-                        rel="noopener noreferrer" class="project-row">
-                        <div class="project-row-left">
-                            <span class="project-indicator">></span>
-                            <div class="project-title-desc">
-                                <span class="project-name">Parola Güvenlik Analizörü</span>
-                                <span class="project-desc">Şifre oluşturucu ve güvenlik puanlayıcı</span>
+                    <details class="project-card">
+                        <summary class="project-row">
+                            <div class="project-row-left">
+                                <span class="project-indicator">></span>
+                                <div class="project-title-desc">
+                                    <span class="project-name">Parola Güvenlik Analizörü</span>
+                                    <span class="project-desc">Parola oluşturma ve güvenlik puanlama aracı</span>
+                                </div>
                             </div>
+                            <div class="project-row-right">
+                                <span class="project-toggle" aria-hidden="true">+</span>
+                            </div>
+                        </summary>
+                        <div class="project-details">
+                            <p>Parola Güvenlik Analizörü, kullanıcıların güçlü parolalar üretmesine ve mevcut parolalarının yapısal güvenliğini anlaşılır ölçütlerle değerlendirmesine yardımcı olur.</p>
+                            <ul class="project-features">
+                                <li>Özelleştirilebilir güvenli parola üretimi</li>
+                                <li>Karakter çeşitliliği ve uzunluk analizi</li>
+                                <li>Anlaşılır güvenlik puanı ve geri bildirim</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span>Parola Güvenliği</span>
+                                <span>Güvenlik Analizi</span>
+                                <span>Web Aracı</span>
+                            </div>
+                            <div class="project-gallery" aria-label="Parola Güvenlik Analizörü proje görselleri">
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                            </div>
+                            <a href="https://github.com/RFKaya/sifre-olusturucu-puanlayici" target="_blank"
+                                rel="noopener noreferrer" class="project-action">GitHub'da İncele <span>↗</span></a>
                         </div>
-                        <div class="project-row-right">
-                            <span class="project-link-arrow">&rarr;</span>
-                        </div>
-                    </a>
+                    </details>
 
-                    <a href="https://github.com/RFKaya/ctf-conference-tracker" target="_blank" rel="noopener noreferrer"
-                        class="project-row">
-                        <div class="project-row-left">
-                            <span class="project-indicator">></span>
-                            <div class="project-title-desc">
-                                <span class="project-name">Siber Etkinlik Takipçisi</span>
-                                <span class="project-desc">CTF & Konferans takip sistemi</span>
+                    <details class="project-card">
+                        <summary class="project-row">
+                            <div class="project-row-left">
+                                <span class="project-indicator">></span>
+                                <div class="project-title-desc">
+                                    <span class="project-name">Siber Etkinlik Takipçisi</span>
+                                    <span class="project-desc">CTF ve konferans takip sistemi</span>
+                                </div>
                             </div>
+                            <div class="project-row-right">
+                                <span class="project-toggle" aria-hidden="true">+</span>
+                            </div>
+                        </summary>
+                        <div class="project-details">
+                            <p>Siber Etkinlik Takipçisi, CTF yarışmaları ve siber güvenlik konferanslarını tek noktada takip etmeyi kolaylaştıran bir etkinlik listeleme projesidir.</p>
+                            <ul class="project-features">
+                                <li>CTF ve konferansları düzenli listeleme</li>
+                                <li>Etkinlik tarihlerini kolay takip etme</li>
+                                <li>Siber güvenlik topluluğu için merkezi görünüm</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span>CTF</span>
+                                <span>Siber Güvenlik</span>
+                                <span>Etkinlik Takibi</span>
+                            </div>
+                            <div class="project-gallery" aria-label="Siber Etkinlik Takipçisi proje görselleri">
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                                <div class="project-image-placeholder"><span>Proje görseli</span></div>
+                            </div>
+                            <a href="https://github.com/RFKaya/ctf-conference-tracker" target="_blank"
+                                rel="noopener noreferrer" class="project-action">GitHub'da İncele <span>↗</span></a>
                         </div>
-                        <div class="project-row-right">
-                            <span class="project-link-arrow">&rarr;</span>
-                        </div>
-                    </a>
+                    </details>
                 </div>
             </section>
         </main>
