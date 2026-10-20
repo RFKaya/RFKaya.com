@@ -248,3 +248,76 @@ if (projectGrid) {
         if (event.key === 'Escape' && activeProject && expanding) reverseProject();
     });
 }
+
+const yearLabel = document.getElementById('year');
+if (yearLabel) yearLabel.textContent = new Date().getFullYear();
+
+const footerMark = document.querySelector('.footer-mark');
+
+if (footerMark) {
+    const layers = footerMark.querySelectorAll('[data-mark]');
+    const word = layers[0].textContent;
+    const glyphs = '01<>/\{}[]#$%&*+=?!';
+    let state = 'shown';
+    let run = 0;
+
+    function setText(text) {
+        layers.forEach((layer) => { layer.textContent = text; });
+    }
+
+    function scramble(revealed = 0) {
+        return [...word].map((char, index) => (
+            index < revealed ? char : glyphs[Math.floor(Math.random() * glyphs.length)]
+        )).join('');
+    }
+
+    function hide() {
+        run++;
+        state = 'hidden';
+        setText(scramble());
+    }
+
+    function decode() {
+        if (state !== 'hidden') return;
+        state = 'decoding';
+        const current = ++run;
+        const duration = 1000;
+        const start = performance.now();
+        let lastSwap = 0;
+        function step(now = start) {
+            if (current !== run) return;
+            const progress = (now - start) / duration;
+            if (progress >= 1) {
+                setText(word);
+                state = 'shown';
+                return;
+            }
+            if (now - lastSwap > 45) {
+                lastSwap = now;
+                setText(scramble(Math.floor(progress * word.length)));
+            }
+            requestAnimationFrame(step);
+        }
+        step();
+    }
+
+    if (!reducedMotion) {
+        hide();
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) hide();
+            else if (entry.intersectionRatio >= .5) decode();
+        }, { threshold: [0, .5] });
+        observer.observe(footerMark);
+    }
+
+    footerMark.parentElement.addEventListener('pointermove', (event) => {
+        if (event.pointerType !== 'mouse') return;
+        const rect = footerMark.getBoundingClientRect();
+        footerMark.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+        footerMark.style.setProperty('--my', `${event.clientY - rect.top}px`);
+        footerMark.classList.add('is-lit');
+    });
+    footerMark.parentElement.addEventListener('pointerleave', () => {
+        footerMark.classList.remove('is-lit');
+    });
+}

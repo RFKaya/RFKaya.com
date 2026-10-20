@@ -14,14 +14,14 @@
 </head>
 
 <body>
-  <div class="page-shell">
+  <div class="page-shell" id="top">
     <header class="topbar">
       <a class="wordmark" href="#top" aria-label="Rauf Kaya, sayfa başına dön">rk<span class="wordmark-dot">.</span></a>
       <span class="topbar-note">GÜVENLİK <span aria-hidden="true">/</span> YAZILIM</span>
       <a class="topbar-link" href="https://github.com/RFKaya/" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
     </header>
 
-    <main id="top">
+    <main>
       <section class="intro" aria-labelledby="name">
         <div class="portrait-wrap">
           <span class="portrait-orbit portrait-orbit-one" aria-hidden="true"></span>
@@ -44,6 +44,13 @@
               <circle cx="4" cy="4" r="2"></circle>
             </svg>
             LinkedIn
+          </a>
+          <a href="mailto:hello@rfkaya.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-10 6L2 7"></path>
+            </svg>
+            E-posta
           </a>
         </nav>
         <div class="technology-strip" aria-label="Kullandığım diller, framework'ler ve veritabanları">
@@ -105,9 +112,18 @@
     </main>
 
     <footer class="footer">
-      <span>© RAUF KAYA</span>
-      <span class="footer-symbol" aria-hidden="true">⌁</span>
-      <a href="#top">YUKARI ÇIK ↑</a>
+      <div class="footer-top">
+        <a class="contact-mail" id="iletisim" href="mailto:hello@rfkaya.com">hello@rfkaya.com <span aria-hidden="true">↗</span></a>
+        <div class="footer-bar">
+          <span>© <span id="year">2026</span> RAUF KAYA</span>
+          <a href="#top">YUKARI ÇIK ↑</a>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">
+        <span class="mark-outline" data-mark>rfkaya.</span>
+        <span class="mark-fill" data-mark>rfkaya.</span>
+        <span class="mark-spot" data-mark>rfkaya.</span>
+      </div>
     </footer>
   </div>
   <script type="module" src="script.js"></script>
