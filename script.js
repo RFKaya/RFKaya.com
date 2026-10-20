@@ -82,11 +82,13 @@ if (technologyViewport && technologyTrack && originalIcons) {
     technologyViewport.addEventListener('scroll', wrapScroll, { passive: true });
     technologyViewport.addEventListener('pointerdown', (event) => {
         if (event.pointerType === 'mouse' && event.button !== 0) return;
+        if (event.pointerType === 'mouse') event.preventDefault();
         dragging = true;
         lastPointerX = event.clientX;
         technologyViewport.classList.add('is-dragging');
         technologyViewport.setPointerCapture(event.pointerId);
     });
+    technologyViewport.addEventListener('dragstart', (event) => event.preventDefault());
     technologyViewport.addEventListener('pointermove', (event) => {
         if (!dragging) return;
         technologyViewport.scrollLeft -= event.clientX - lastPointerX;
@@ -131,6 +133,9 @@ if (projectGrid) {
     let placeholder = null;
     let panelAnimation = null;
     let contentAnimation = null;
+    let gridAnimation = null;
+    let naturalHeight = 0;
+    let openHeight = 0;
     let expanding = false;
 
     projectGrid.classList.add('is-enhanced');
@@ -149,6 +154,12 @@ if (projectGrid) {
         return { left: `${frame.left}px`, top: `${frame.top}px`, width: `${frame.width}px`, height: `${frame.height}px` };
     }
 
+    function measureHeights() {
+        projectGrid.style.minHeight = '';
+        naturalHeight = projectGrid.getBoundingClientRect().height;
+        openHeight = Math.max(naturalHeight, activeProject.scrollHeight);
+    }
+
     function animatePanel(toOpen, initialFrame, initialOpacity) {
         const project = activeProject;
         const details = project.querySelector('.project-details');
@@ -156,22 +167,25 @@ if (projectGrid) {
         const currentOpacity = initialOpacity ?? parseFloat(getComputedStyle(details).opacity);
         const slotFrame = frameFromRect(placeholder.getBoundingClientRect());
         const gridRect = projectGrid.getBoundingClientRect();
-        const fullFrame = { left: 0, top: 0, width: gridRect.width, height: gridRect.height };
+        const fullFrame = { left: 0, top: 0, width: gridRect.width, height: openHeight };
         const targetFrame = toOpen ? fullFrame : slotFrame;
         const dimensions = ['left', 'top', 'width', 'height'];
         const range = Math.max(1, ...dimensions.map((dimension) => Math.abs(fullFrame[dimension] - slotFrame[dimension])));
         const distance = Math.max(...dimensions.map((dimension) => Math.abs(currentFrame[dimension] - targetFrame[dimension])));
         const duration = Math.max(90, Math.min(340, 340 * distance / range));
 
+        const timing = { duration, fill: 'both', easing: 'cubic-bezier(.16, 1, .3, 1)' };
+
         panelAnimation?.cancel();
         contentAnimation?.cancel();
+        gridAnimation?.cancel();
         expanding = toOpen;
-        const animation = project.animate([keyframe(currentFrame), keyframe(targetFrame)], {
-            duration,
-            fill: 'both',
-            easing: 'cubic-bezier(.16, 1, .3, 1)'
-        });
+        const animation = project.animate([keyframe(currentFrame), keyframe(targetFrame)], timing);
         panelAnimation = animation;
+        gridAnimation = projectGrid.animate([
+            { minHeight: `${gridRect.height}px` },
+            { minHeight: `${toOpen ? openHeight : naturalHeight}px` }
+        ], timing);
         contentAnimation = details.animate([
             { opacity: currentOpacity },
             { opacity: toOpen ? 1 : 0 }
@@ -184,8 +198,12 @@ if (projectGrid) {
             } else {
                 panelAnimation.cancel();
                 contentAnimation.cancel();
+                gridAnimation.cancel();
+                measureHeights();
+                projectGrid.style.minHeight = `${openHeight}px`;
                 panelAnimation = null;
                 contentAnimation = null;
+                gridAnimation = null;
                 if (window.innerWidth <= 650) projectGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         };
@@ -195,8 +213,11 @@ if (projectGrid) {
         const project = activeProject;
         panelAnimation?.cancel();
         contentAnimation?.cancel();
+        gridAnimation?.cancel();
         panelAnimation = null;
         contentAnimation = null;
+        gridAnimation = null;
+        projectGrid.style.minHeight = '';
         project.open = false;
         placeholder.remove();
         placeholder = null;
@@ -219,8 +240,10 @@ if (projectGrid) {
         activeProject = project;
         expanding = true;
         projects.forEach((other) => { if (other !== project) other.inert = true; });
+        measureHeights();
 
         if (reducedMotion) {
+            projectGrid.style.minHeight = `${openHeight}px`;
             if (window.innerWidth <= 650) projectGrid.scrollIntoView({ block: 'start' });
             return;
         }
@@ -246,6 +269,12 @@ if (projectGrid) {
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && activeProject && expanding) reverseProject();
+    });
+
+    window.addEventListener('resize', () => {
+        if (!activeProject || panelAnimation) return;
+        measureHeights();
+        projectGrid.style.minHeight = `${openHeight}px`;
     });
 }
 
